@@ -1,5 +1,8 @@
 phone_book = []
 start_phone_book = []
+start_phone_book1 = []
+res_replace = ''
+xxx = []
 PATH = 'phone_book.txt'
 
 
@@ -47,11 +50,18 @@ def search_data(data_cont):
 
 
 def change_contact(number_contact, res_text):
-    global phone_book
-    with open(PATH, 'r', encoding='UTF-8') as file:
-        for count, value in enumerate(file, 1):
-            if number_contact == count:
-                phone_book.replace(value, res_text)
+    global xxx, start_phone_book, phone_book
+    for title, value in res_text.items():
+        xxx.append(''.join(value.split()))
+    new_contact = ';'.join(xxx) + '\n'
+    with open(PATH, 'r', encoding='UTF-8') as c_contacts:
+        chang_contact = c_contacts.readlines()
+        for x in range(len(chang_contact)):
+            if number_contact == x + 1:
+                contact = new_contact.strip().split(';')
+                phone_book.append({'name': contact[0],
+                                   'phone': contact[1],
+                                   'comment': contact[2]})
 
 
 def del_contact(contact):

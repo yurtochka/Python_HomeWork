@@ -35,6 +35,7 @@ def show_contacts(book: list[dict], message: str):
                   f'{contact.get("phone"):<20}'
                   f'{contact.get("comment"):<20}')
         print('-' * 63 + '\n')
+        return len(book)
     else:
         print(message)
 
@@ -55,7 +56,7 @@ def search_contacts():
 
 
 def number_change_book():
-    line_change = input(txt.num_contact)
+    line_change = int(input(txt.num_contact))
     return line_change
 
 

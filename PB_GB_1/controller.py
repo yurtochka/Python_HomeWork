@@ -27,10 +27,15 @@ def start_pb():
                 view.show_contacts(item, txt.no_data_search)
             case 6:
                 pb = model.get_pb()
-                view.show_contacts(pb, txt.no_contact_or_file)
+                xxx = view.show_contacts(pb, txt.no_contact_or_file)
                 number_contact_change = view.number_change_book()
-                contact = view.new_contact()
-                model.change_contact(number_contact_change, contact)
+                if number_contact_change > xxx:
+                    view.print_info(txt.no_contact)
+                else:
+                    contact = view.new_contact()
+                    model.change_contact(number_contact_change, contact)
+                    model.del_contact(number_contact_change)
+                    view.print_info(txt.add_change_cont)
             case 7:
                 pb = model.get_pb()
                 view.show_contacts(pb, txt.no_contact_or_file)
